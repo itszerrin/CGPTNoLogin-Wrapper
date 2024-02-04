@@ -21,7 +21,7 @@ class Api(object):
         # shuffle the headers
         self.__headers = get_headers()
 
-        return response.json()
+        return response.json() + [{"id": "gpt-4-0125-preview", "name": "GPT-4"}, {"id": "gpt-4-1106-preview", "name": "GPT-4"}]
 
     def chat(self, messages: List[Dict[str, str]], model: Model, temperature: float = 0.7) -> str:
 

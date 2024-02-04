@@ -47,6 +47,8 @@ def chat():
 @app.route("/models", methods=["GET"])
 def get_models():
 
+    print(api.get_models())
+
     return jsonify(
         {"data": api.get_models()}), 200
 
