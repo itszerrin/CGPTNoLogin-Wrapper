@@ -47,7 +47,7 @@ class Api(object):
         # shuffle the headers
         self.__headers = get_headers()
 
-        return response.text
+        return response.content.decode("utf-8")
     
 
 
