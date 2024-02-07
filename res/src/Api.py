@@ -33,13 +33,7 @@ class Api(object):
             "temperature": temperature
         }
 
-        # check if messages has a first message by role 'system'
-        if messages[0]['role'] == 'system':
-            
-            # if yes, add that as the prompt (cuz why not)
-            data['prompt'] = messages[0]['content']
-
-        response = requests.post(self.__url, headers=self.__headers, json=data)
+        response = requests.post(self.__url, headers=self.__headers, json=data, timeout=100)
 
         # raise an error if the response is not 200
         response.raise_for_status()
