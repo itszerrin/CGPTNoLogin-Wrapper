@@ -12,16 +12,13 @@ class Api(object):
         self.__url = "https://chatgptnologin.com/api/chat"
 
     def get_models(self) -> List[Dict[str, Any]]:
-
-        response = requests.post("https://chatgptnologin.com/api/models", headers=self.__headers, json={"key": ""})
-
-        # raise an error if the response is not 200
-        response.raise_for_status()
-
-        # shuffle the headers
-        self.__headers = get_headers()
-
-        return response.json() + [{"id": "gpt-4-0125-preview", "name": "GPT-4"}, {"id": "gpt-4-1106-preview", "name": "GPT-4"}]
+    
+            return [
+                {"id": "gpt-3.5-turbo", "name": "GPT-3.5"},
+                {"id": "gpt-4", "name": "GPT-4"},
+                {"id": "gpt-4-0125-preview", "name": "GPT-4"},
+                {"id": "gpt-4-1106-preview", "name": "GPT-4"}
+            ]
 
     def chat(self, messages: List[Dict[str, str]], model: Model, temperature: float = 0.7) -> str:
 
