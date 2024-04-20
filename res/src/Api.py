@@ -39,8 +39,6 @@ class Api(object):
         self.__headers = get_headers()
 
         return response.content.decode("utf-8")
-    
-
 
 
 
