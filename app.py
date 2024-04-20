@@ -1,11 +1,8 @@
 from flask import Flask, request, jsonify, Response
 from flask_cors import CORS
-from flask_cloudflared import run_with_cloudflared
 
-from res.src.Api import Api
-from res.src.Models import models
+from res.src import Api, models, create_cloudflare_tunnel, openai_format
 from res.typing import Dict, List, Model
-from res.src.format import openai_format
 
 import logging
 
@@ -17,6 +14,11 @@ CORS(app)
 
 # api instance
 api = Api()
+
+# constants
+DEBUG: bool = False
+HOST: str = "0.0.0.0"
+PORT: int = 5000
 
 # chatting route
 @app.route("/chat/completions", methods=["POST"])
@@ -52,7 +54,12 @@ def get_models():
     return jsonify(
         {"data": api.get_models()}), 200
 
+# root path
+@app.route("/", methods=["GET"])
+def root():
+    return Response("<h3>Welcome to the ChatGPT API!</h3>"), 200
+
 if __name__ == "__main__":
 
-    run_with_cloudflared(app)
-    app.run(debug=False, host="0.0.0.0", port=5000)
+    create_cloudflare_tunnel(PORT)
+    app.run(debug=DEBUG, host=HOST, port=PORT)
