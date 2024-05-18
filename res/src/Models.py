@@ -26,4 +26,17 @@ gpt_4_1106_preview = {
     "maxLength": 128000
 }
 
-models = {"gpt-3.5-turbo": gpt_3_5_turbo, "gpt-4": gpt_4, "gpt-4-0125-preview": gpt_4_0125_preview, "gpt-4-1106-preview": gpt_4_1106_preview}
+gpt_4o = {
+    "id": "gpt-4o",
+    "name": "GPT-4",
+    "tokenLimit": 128000,
+    "maxLength": 128000
+}
+
+models = {
+    "gpt-3.5-turbo": gpt_3_5_turbo, 
+    "gpt-4": gpt_4, 
+    "gpt-4-0125-preview": gpt_4_0125_preview, 
+    "gpt-4-1106-preview": gpt_4_1106_preview,
+    "gpt-4o": gpt_4o
+}
