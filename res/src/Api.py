@@ -17,7 +17,8 @@ class Api(object):
                 {"id": "gpt-3.5-turbo", "name": "GPT-3.5"},
                 {"id": "gpt-4", "name": "GPT-4"},
                 {"id": "gpt-4-0125-preview", "name": "GPT-4"},
-                {"id": "gpt-4-1106-preview", "name": "GPT-4"}
+                {"id": "gpt-4-1106-preview", "name": "GPT-4"},
+                {"id": "gpt-4o", "name": "GPT-4"}
             ]
 
     def chat(self, messages: List[Dict[str, str]], model: Model, temperature: float = 0.7) -> str:
@@ -39,6 +40,3 @@ class Api(object):
         self.__headers = get_headers()
 
         return response.content.decode("utf-8")
-
-
-
